@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auto Colour Predictor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🎯 Auto Colour Prediction</h1>
+
+  <table id="predictionTable">body {
+  background-color: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+h1 {
+  color: gold;
+}
+table {
+  border-collapse: collapse;
+  width: 90%;
+  max-width: 500px;
+}
+td, th {
+  border: 1px solid #444;
+  padding: 10px;
+  text-align: center;
+}
+.big {
+  background-color: #e91e63;
+  color: white;
+  font-weight: bold;
+}
+.small {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+}
+.number {
+  background-color: #222;
+  color: cyan;
+}
+const inputData = [
+  [9, 2],
+  [6, 4],
+  [8, 3],
+  [5, 1],
+];
+
+function getPrediction(n1, n2) {
+  const difference = Math.abs(n1 - n2);
+  return difference >= 5 ? "BIG" : "SMALL";
+}
+
+const table = document.getElementById("predictionTable");
+
+inputData.forEach(pair => {
+  const row = document.createElement("tr");
+
+  const num1 = document.createElement("td");
+  num1.className = "number";
+  num1.textContent = pair[0];
+
+  const num2 = document.createElement("td");
+  num2.className = "number";
+  num2.textContent = pair[1];
+
+  const prediction = document.createElement("td");
+  const result = getPrediction(pair[0], pair[1]);
+  prediction.className = result.toLowerCase();
+  prediction.textContent = result;
+
+  row.appendChild(num1);
+  row.appendChild(num2);
+  row.appendChild(prediction);
+  table.appendChild(row);
+});
+    <tr>
+      <th>Number 1</th>
+      <th>Number 2</th>
+      <th>Prediction</th>
+    </tr>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
